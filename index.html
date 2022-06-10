@@ -11,19 +11,19 @@
     <body>
         <script>
             // User and computer choose rock/paper, or scissors
-            let computerPlay = () => {
+            function computerPlay() {
                 let outcome = ['rock', 'paper', 'scissors'];
                 return outcome[Math.floor(Math.random()*outcome.length)];
-            };
+            }
 
-            let userPlay = () => {
+            function userPlay() {
                 let verified = false;
                 while (!verified) {
                     let result = prompt("Please enter rock, paper, or scissors");
-                    let userResult = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`;
-                    if (userResult == "rock" || userResult == "paper" || userResult == "scissors") {
+                    result = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`; // the string will be a combination of first letter + rest of the word
+                    if (result == "rock" || result == "paper" || result == "scissors") {
                         verified = true;
-                        return userResult; //return a string with embedded variables
+                        return result; //return a string with embedded variables
                     }
                     else {
                         alert("ERROR: Please try again!");
@@ -31,15 +31,12 @@
                 }// while()
             }
 
-            let playRound = (user, computer) => {
-
+            function playRound(user, computer) {
                 alert("The computer chose " + computer);
-
                 if (user === computer) {
                     alert(`Tie! You and the computer chose ${user}.`);
-                    return 1; // 1 means user won, 0 means computer won
+                    return null;
                 }// if
-
                 if ((user === "rock" && computer === "paper") || (user === "paper" && computer === "scissors") || 
                         (user === "scissors" && computer === "rock")){
                     alert(`You Lose! ${computer} beats ${user}.`);
@@ -49,19 +46,22 @@
                     alert(`You Win! ${user} beats ${computer}.`);
                     return 1;
                 }
-            };
+            }
 
             function game () {
                 let computerPoints = 0;
                 let userPoints = 0;
                 for (let i = 0; i < 5; i++) {
                     let outcome = playRound(userPlay(), computerPlay());
-                    if (outcome) { // outcome is true (or 1), then user wins
-                        userPoints++;
+                    if (outcome === null) { // outcome is true (or 1), then user wins
+                        continue;
                     }// if
+                    else if (outcome) {
+                        userPoints++;
+                    }
                     else {
                         computerPoints++;
-                    }
+                    }// else
                 }// for
 
                 if (userPoints > computerPoints) {
@@ -76,7 +76,6 @@
             }// game()
 
             game();
-
         </script>
     </body>
 </html>
