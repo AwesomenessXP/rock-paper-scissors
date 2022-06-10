@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock Paper Scissors</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <script>
+            // User and computer choose rock/paper, or scissors
+            let computerPlay = () => {
+                let outcome = ['rock', 'paper', 'scissors'];
+                return outcome[Math.floor(Math.random()*3)];
+            };
+
+            let userPlay = () => {
+                let result = prompt("Please enter rock, paper, or scissors");
+                let firstLetter = result.slice(0,1).toLowerCase();
+                let restOfWord = result.slice(1, result.length).toLowerCase();
+                return `${firstLetter}${restOfWord}`; //return a string with embedded variables
+            }
+
+            let playRound = (user, computer) => {
+
+                alert("The computer chose " + computer);
+
+                if (user === computer) {
+                    alert(`Tie! You and the computer chose ${user}.`);
+                    return 1; // 1 means user won, 0 means computer won
+                }// if
+
+                if (user === "rock" && computer === "paper"){
+                    alert(`You Lose! Paper beats rock.`);
+                    return 0;
+                }
+                else if (user === "paper" && computer=== "rock"){ 
+                    alert(`You win! Paper beats rock.`);
+                    return 1;
+                }
+
+                if (user === "scissors" && computer === "paper"){
+                    alert(`You Win! Scissors beats paper.`);
+                    return 1;
+                }
+                else if (user === "paper" && computer === "scissors"){
+                    alert(`You Lose! Scissors beats paper.`); 
+                    return 0;
+                }
+
+                if (user === "rock" && computer=== "scissors"){
+                    alert(`You Win! Rock beats scissors.`);
+                    return 1;
+                }
+                else if (user === "scissors" && computer === "rock"){
+                    alert(`You Lose! Rock beats scissors.`); 
+                    return 0;
+                }
+            };
+
+            function game () {
+                let computerPoints = 0;
+                let userPoints = 0;
+                for (let i = 0; i < 5; i++) {
+                    let outcome = playRound(userPlay(), computerPlay());
+                    if (outcome) { // outcome is true (or 1), then user wins
+                        userPoints++;
+                    }// if
+                    else {
+                        computerPoints++;
+                    }
+                }// for
+
+                if (userPoints > computerPoints) {
+                    alert("YOU ARE THE WINNER!!");
+                }
+                else if (userPoints < computerPoints) {
+                    alert("You lose... Perhaps another day...");
+                }
+                else {
+                    alert("An even game for you and the computer.");
+                }
+            }// game()
+
+            game();
+
+        </script>
+    </body>
+</html>
