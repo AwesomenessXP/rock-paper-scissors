@@ -6,14 +6,31 @@
         <title>Rock Paper Scissors</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div>
-            <button class="selectBtn" id="rock">Rock</button>
-            <button class="selectBtn" id = "paper">Paper</button>
-            <button class="selectBtn" id="scissors">Scissors</button>
+        <div id = "section-0"></div>
+        <div id="section-1">
+            <div id = "zero"></div>
+            <div id="one">
+                <h2>User</h2>
+                <h1>0</h1>
+            </div>
+            <div id="two">
+                <button class="selectBtn" id="rock">Rock</button>
+                <button class="selectBtn" id = "paper">Paper</button>
+                <button class="selectBtn" id="scissors">Scissors</button>
+            </div>
+            <div id="three">
+                <h2>Computer</h2>
+                <h1>0</h1>
+            </div>
+            <div id = "four"></div>
         </div>
+
         <script>
             // User and computer choose rock/paper, or scissors
             function computerPlay() {
@@ -21,35 +38,17 @@
                 return outcome[Math.floor(Math.random()*outcome.length)];
             }
 
+            var result;
             function userPlay() {
-                let verified = false;
-                //while (!verified) {}
-                    //let result = prompt("Please enter rock, paper, or scissors");
-                    const buttons = document.querySelectorAll(".selectBtn");
-
-                    buttons.forEach((selection) => {
-                        selection.addEventListener("click", () => {
-                            console.log(selection.id);
-                        });
-                    })
-
-
-                    /*
-                    result = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`; // the string will be a combination of first letter + rest of the word
-                    if (result == "rock" || result == "paper" || result == "scissors") {
-                        verified = true;
-                        return result; //return a string with embedded variables
-                    }
-                    else {
-                        alert("ERROR: Please try again!");
-                    }
-                    */
-                // while()
+                //result = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`; // the string will be a combination of first letter + rest of the word
+                if (result == "rock" || result == "paper" || result == "scissors") {
+                    return result; //return a string with embedded variables
+                }// if
+                else {
+                    console.log("ERROR");
+                }
             }
 
-            userPlay();
-
-            /*
             function playRound(user, computer) {
                 alert("The computer chose " + computer);
                 if (user === computer) {
@@ -60,13 +59,23 @@
                         (user === "scissors" && computer === "rock")){
                     alert(`You Lose! ${computer} beats ${user}.`);
                     return 0;
-                }
+                }// if
                 else {
                     alert(`You Win! ${user} beats ${computer}.`);
                     return 1;
-                }
+                }// else
             }
 
+            const buttons = document.querySelectorAll(".selectBtn");
+            buttons.forEach((selection) => {
+                selection.addEventListener("click", () => {
+                    console.log(selection.id);
+                    result = selection.id;
+                    playRound(userPlay(), computerPlay());
+                });
+            });
+
+            /*
             function game () {
                 let outcome = playRound(userPlay(), computerPlay());
                 /*

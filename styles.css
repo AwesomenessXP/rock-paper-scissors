@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(13,17,23);
+}
+
+#section-0{
+    height: 12em;
+}
+
+button {
+    background-color:rgb(81, 50, 255);
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#section-1 {
+    display: flex;
+    position: relative;
+    height: 20em;
+    width: auto;
+    justify-content: center;
+}
+
+#one, #two, #three { /* ONE AND TWO ARE EMPTY DIVS*/
+    flex: 1 1 0%;
+    font-family: 'Mulish', sans-serif;
+}
+
+#zero, #four {
+    flex: 1 1 0%;
+}
+
+#one, #three {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background-image: linear-gradient(to left, rgb(0, 247, 255), rgb(103, 255, 184) );
+    border-radius: 15px;
+}
+
+#one h2, #three h2{
+    height: 40px;
+    width: auto;
+    margin-top: 0;
+    color: rgb(81, 50, 255);
+    font-family: 'Mulish', sans-serif;
+}
+
+#one h1, #three h1{
+    position: relative;
+    height: 1.1em;
+    width: auto;
+    margin-top: 50px;
+    font-size: 12em;
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    color:rgb(0, 68, 253);
+    bottom: 30px;
+}
+
+#one {
+    border: 4px solid white;
+}
+
+#two {
+    display: flex;
+    justify-content: space-around;
+}
+
+#three {
+    border: 4px solid white;
+}
+
+.selectBtn {
+    height: 40px;
+    width: 70px;
+    position: relative;
+    margin-top: 20em;
+}
