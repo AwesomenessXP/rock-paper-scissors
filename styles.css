@@ -31,6 +31,12 @@ button:hover {
     font-family: 'Mulish', sans-serif;
 }
 
+#two {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 #zero, #four {
     flex: 1 1 0%;
 }
@@ -52,6 +58,18 @@ button:hover {
     font-family: 'Mulish', sans-serif;
 }
 
+#two h2 {
+    position: relative;
+    height: 10%;
+    top: 4em;
+    color: white;
+}
+
+#btns {
+    display: flex;
+    justify-content: space-around;
+}
+
 #one h1, #three h1{
     position: relative;
     height: 1.1em;
@@ -64,22 +82,17 @@ button:hover {
     bottom: 30px;
 }
 
-#one {
-    border: 4px solid white;
-}
-
 #two {
     display: flex;
-    justify-content: space-around;
+    text-align: center;
 }
 
-#three {
-    border: 4px solid white;
+#one, #three {
+    border: 4px solid rgb(255, 255, 255);
 }
 
 .selectBtn {
     height: 40px;
     width: 70px;
     position: relative;
-    margin-top: 20em;
 }
