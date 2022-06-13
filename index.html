@@ -13,26 +13,36 @@
     </head>
     <body>
         <div id = "section-0"></div>
+
         <div id="section-1">
-            <div id = "zero"></div>
-            <div id="one">
-                <h2>User</h2>
-                <h1>0</h1>
-            </div>
-            <div id="two">
-                <h2>Choose rock, paper, or scissors</h2>
-                <div id="btns">
-                    <button class="selectBtn" id="rock">Rock</button>
-                    <button class="selectBtn" id = "paper">Paper</button>
-                    <button class="selectBtn" id="scissors">Scissors</button>
+            <div id="section-1-wrapper">
+                <div id="one">
+                    <h2>User</h2>
+                    <h1 id="userScore">0</h1>
+                </div>
+                <div id="two">
+                    <h2 id="selector">Choose rock, paper, or scissors</h2>
+                </div>
+                <div id="three">
+                    <h2>Computer</h2>
+                    <h1 id="compScore">0</h1>
                 </div>
             </div>
-            <div id="three">
-                <h2>Computer</h2>
-                <h1>0</h1>
-            </div>
-            <div id = "four"></div>
         </div>
+
+        <div id="btns">
+            <button class="selectBtn" id="rock"><h1 style="font-size: 50px; margin-top: 0.2em;">✊</h1></button>
+            <button class="selectBtn" id = "paper"><h1 style="font-size: 50px; margin-top: 0.2em;">✋</h1></button>
+            <button class="selectBtn" id="scissors"><h1 style="font-size: 50px; margin-top: 0.2em;">✌️</h1></button>
+        </div>
+
+        <div id="screen">
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <footer>
+            <p>Copyright @HaskMoney</p>
+        </footer>
 
         <script>
             // User and computer choose rock/paper, or scissors
@@ -41,7 +51,7 @@
                 return outcome[Math.floor(Math.random()*outcome.length)];
             }
 
-            var result;
+            let result;
             function userPlay() {
                 //result = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`; // the string will be a combination of first letter + rest of the word
                 if (result == "rock" || result == "paper" || result == "scissors") {
@@ -52,66 +62,86 @@
                 }
             }
 
+            // get outcome of the game
+            let outcome;
+            const descBox = document.querySelector("#selector");
             function playRound(user, computer) {
-                alert("The computer chose " + computer);
                 if (user === computer) {
-                    alert(`Tie! You and the computer chose ${user}.`);
+                    descBox.textContent = `Tie! You and the computer chose ${user}.`;
                     return null;
                 }// if
                 if ((user === "rock" && computer === "paper") || (user === "paper" && computer === "scissors") || 
                         (user === "scissors" && computer === "rock")){
-                    alert(`You Lose! ${computer} beats ${user}.`);
+                    descBox.textContent = `You Lose! ${computer} beats ${user}.`;
                     return 0;
                 }// if
                 else {
-                    alert(`You Win! ${user} beats ${computer}.`);
+                    descBox.textContent = `You Win! ${user} beats ${computer}.`;
                     return 1;
                 }// else
             }
 
+            // variables for score and counter
+            let games = 0;
+            let computerPoints = 0;
+            let userPoints = 0;
+            const userScoreDiv = document.querySelector("#userScore");
+            const computerScoreDiv = document.querySelector("#compScore");
+            const endScreen = document.querySelector("#screen");
+            const resetBtn = endScreen.querySelector("button");
+            endScreen.style.display = "none";
+
+            // event listener for when the user clicks a button
             const buttons = document.querySelectorAll(".selectBtn");
             buttons.forEach((selection) => {
                 selection.addEventListener("click", () => {
                     console.log(selection.id);
                     result = selection.id;
-                    playRound(userPlay(), computerPlay());
+                    ++games;
+                    game();
                 });
             });
 
-            /*
+            // at the end of the game, show the reset button screen
+            resetBtn.addEventListener('click', () => {
+                computerScoreDiv.textContent = 0;
+                userScoreDiv.textContent = 0;
+                endScreen.style.display = "none";
+            });
+
             function game () {
                 let outcome = playRound(userPlay(), computerPlay());
-                /*
-                let computerPoints = 0;
-                let userPoints = 0;
-                // logic for playing the round 5 times
-                for (let i = 0; i < 5; i++) {
-                    if (outcome === null) { // outcome is true (or 1), then user wins
-                        continue;
-                    }// if
-                    else if (outcome) {
-                        userPoints++;
+
+                if (outcome !== null) { // outcome is true (or 1), then user wins
+                    if (outcome) {
+                        userScoreDiv.textContent = ++userPoints;
+                        console.log(userPoints);
                     }
                     else {
-                        computerPoints++;
+                        computerScoreDiv.textContent = ++computerPoints;
+                        console.log(computerPoints);
                     }// else
-                }// for
+                }// if
 
-                if (userPoints > computerPoints) {
-                    alert("YOU ARE THE WINNER!!");
-                }
-                else if (userPoints < computerPoints) {
-                    alert("You lose... Perhaps another day...");
-                }
-                else {
-                    alert("An even game for you and the computer.");
-                }
+                if (userPoints === 5 || computerPoints === 5) {
+                    if (userPoints > computerPoints) {
+                        descBox.textContent = "YOU ARE THE WINNER!!";
+                    }
+                    else if (userPoints < computerPoints) {
+                        descBox.textContent = "YOU LOST!! GET GOOD LMAO";
+                    }
+                    else {
+                        descBox.textContent = "An even game for you and the computer.";
+                    }
+                    userPoints = 0;
+                    computerPoints = 0;
+                    games = 0;
+
+                    endScreen.style.display = "block";
+                }// if
+
             }// game()
 
-            game();
-
-            */
-            
         </script>
     </body>
 </html>

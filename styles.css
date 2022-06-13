@@ -6,9 +6,9 @@ body {
     height: 12em;
 }
 
-button {
+#btns button {
     background-color:rgb(81, 50, 255);
-    border: 2px solid white;
+    border: 2.3px solid white;
     border-radius: 8px;
     color: white;
 }
@@ -26,6 +26,12 @@ button:hover {
     justify-content: center;
 }
 
+#section-1-wrapper {
+   display: flex;
+   flex-direction: row;
+   width: 1000px;
+}
+
 #one, #two, #three { /* ONE AND TWO ARE EMPTY DIVS*/
     flex: 1 1 0%;
     font-family: 'Mulish', sans-serif;
@@ -35,6 +41,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 5px;
 }
 
 #zero, #four {
@@ -66,8 +73,13 @@ button:hover {
 }
 
 #btns {
+    position: relative;
     display: flex;
+    margin: auto;
+    height: 200px;
+    width: 30%;
     justify-content: space-around;
+    margin-top: 2%;
 }
 
 #one h1, #three h1{
@@ -92,7 +104,38 @@ button:hover {
 }
 
 .selectBtn {
+    height: 100px;
+    width: 150px;
+}
+
+footer {
+    color: white;
+    font-weight: bold;
+    font-family: 'Mulish', sans-serif;
+    position: absolute;
+    bottom: 0;
+    letter-spacing: 2px;
+}
+
+#screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+#screen button {
+    background-color:rgb(81, 50, 255);
+    border: 2.3px solid white;
+    border-radius: 8px;
+    color: white;
     height: 40px;
-    width: 70px;
-    position: relative;
+    width: 80px;
+}
+
+#resetBtn {
+    width: auto;
+    margin-top: 35em;
 }
