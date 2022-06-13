@@ -9,6 +9,11 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        <div>
+            <button class="selectBtn" id="rock">Rock</button>
+            <button class="selectBtn" id = "paper">Paper</button>
+            <button class="selectBtn" id="scissors">Scissors</button>
+        </div>
         <script>
             // User and computer choose rock/paper, or scissors
             function computerPlay() {
@@ -18,8 +23,18 @@
 
             function userPlay() {
                 let verified = false;
-                while (!verified) {
-                    let result = prompt("Please enter rock, paper, or scissors");
+                //while (!verified) {}
+                    //let result = prompt("Please enter rock, paper, or scissors");
+                    const buttons = document.querySelectorAll(".selectBtn");
+
+                    buttons.forEach((selection) => {
+                        selection.addEventListener("click", () => {
+                            console.log(selection.id);
+                        });
+                    })
+
+
+                    /*
                     result = `${result.slice(0,1).toLowerCase()}${result.slice(1, result.length).toLowerCase()}`; // the string will be a combination of first letter + rest of the word
                     if (result == "rock" || result == "paper" || result == "scissors") {
                         verified = true;
@@ -28,9 +43,13 @@
                     else {
                         alert("ERROR: Please try again!");
                     }
-                }// while()
+                    */
+                // while()
             }
 
+            userPlay();
+
+            /*
             function playRound(user, computer) {
                 alert("The computer chose " + computer);
                 if (user === computer) {
@@ -74,10 +93,12 @@
                 }
                 else {
                     alert("An even game for you and the computer.");
-                }*/
+                }
             }// game()
 
             game();
+
+            */
             
         </script>
     </body>
