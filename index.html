@@ -49,10 +49,12 @@
             }
 
             function game () {
+                let outcome = playRound(userPlay(), computerPlay());
+                /*
                 let computerPoints = 0;
                 let userPoints = 0;
+                // logic for playing the round 5 times
                 for (let i = 0; i < 5; i++) {
-                    let outcome = playRound(userPlay(), computerPlay());
                     if (outcome === null) { // outcome is true (or 1), then user wins
                         continue;
                     }// if
@@ -72,10 +74,11 @@
                 }
                 else {
                     alert("An even game for you and the computer.");
-                }
+                }*/
             }// game()
 
             game();
+            
         </script>
     </body>
 </html>
