@@ -60,6 +60,7 @@ resetBtn.addEventListener('click', () => {
     computerScoreDiv.textContent = 0;
     userScoreDiv.textContent = 0;
     endScreen.style.display = "none";
+    descBox.textContent = "Choose rock, paper, or scissors";
 });
 
 // this is what happens in a single game, if user or comp gets to 5 points, game ends
