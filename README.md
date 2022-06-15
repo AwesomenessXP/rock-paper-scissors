@@ -1,2 +1,2 @@
 # rock-paper-scissors
-practice with javascript
+- [practicing vanilla javascript](https://awesomenessxp.github.io/rock-paper-scissors/)
